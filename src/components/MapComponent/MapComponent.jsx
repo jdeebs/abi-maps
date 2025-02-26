@@ -1,20 +1,35 @@
-import { useRef } from "react";
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, ImageOverlay } from 'react-leaflet';
+import L from "leaflet";
+
 import 'leaflet/dist/leaflet.css';
 import "./MapComponent.css";
 
+// Valley Map Image
+import valleyMapImage from '/src/assets/images/Valley-Map.webp';
+
 
 function MapComponent() {
-    const mapRef = useRef(null);
-    const latitude = 51.505;
-    const longitude = -0.09;
+    // Define bounds of valley map
+    const valleyBounds = [
+        [0, 0], // Top-left corner (y, x)
+        [1833, 3028], // Bottom-right corner (y, x)
+    ];
   
     return ( 
-        <MapContainer center={[latitude, longitude]} zoom={13} ref={mapRef} style={{height: "80vh", width: "80vw"}}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+        <MapContainer
+            // Simple CRS needed for non-geographical maps
+            crs={L.CRS.Simple}
+            bounds={valleyBounds}
+            zoom={0}
+            maxZoom={5}
+            minZoom={-1}
+            // Map container size
+            style={{ height: "80vh", width: "80vw"}}
+        >
+        <ImageOverlay
+            url={valleyMapImage}
+            bounds={valleyBounds}
+        />
         </MapContainer>
     );
 }
