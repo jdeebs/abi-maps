@@ -1,5 +1,4 @@
-import { MapContainer, ImageOverlay, useMap } from 'react-leaflet';
-import { useEffect } from 'react';
+import { MapContainer, ImageOverlay } from 'react-leaflet';
 import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
@@ -14,21 +13,6 @@ function MapComponent() {
         [0, 0], // Top-left corner (y, x)
         [1833, 3028], // Bottom-right corner (y, x)
     ];
-
-    // Inline component to apply fitBounds
-    const CenterMap = () => {
-        // Leaflet hook to get access to map instance
-        const map = useMap();
-
-        // Runs after MapComponent is added to the DOM
-        useEffect(() => {
-            map.fitBounds(valleyBounds);
-        }, [map]);
-
-        // Component doesn't render anything visually
-        // so just returns null
-        return null;
-    }
   
     return (
         <MapContainer
@@ -45,7 +29,6 @@ function MapComponent() {
             url={valleyMapImage}
             bounds={valleyBounds}
         />
-        <CenterMap />
         </MapContainer>
     );
 }
