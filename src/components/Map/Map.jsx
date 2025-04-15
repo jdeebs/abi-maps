@@ -1,6 +1,7 @@
 import { MapContainer, ImageOverlay } from 'react-leaflet';
 import L from "leaflet";
 import ClickToMark from '../ClickToMark/ClickToMark.jsx';
+import MarkerLayer from '../MarkerLayer/MarkerLayer.jsx';
 
 import 'leaflet/dist/leaflet.css';
 import "./Map.css";
@@ -31,6 +32,7 @@ function Map() {
             bounds={valleyBounds}
         />
         <ClickToMark />
+        <MarkerLayer />
         </MapContainer>
     );
 }
