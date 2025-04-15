@@ -1,4 +1,4 @@
-import MapComponent from "./components/MapComponent/MapComponent.jsx";
+import Map from "./components/Map/Map.jsx";
 
 import "./App.css";
 
@@ -7,7 +7,7 @@ function App() {
     <>
       <h1>Map</h1>
       <div className="map-container">
-        <MapComponent />
+        <Map />
       </div>
     </>
   );

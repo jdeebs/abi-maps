@@ -2,12 +2,12 @@ import { MapContainer, ImageOverlay, Marker, Popup, useMapEvents } from 'react-l
 import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
-import "./MapComponent.css";
+import "./Map.css";
 
 // Valley Map Image
 import valleyMapImage from '/src/assets/images/Valley-Map.webp';
 
-function MapComponent() {
+function Map() {
     // Define bounds of valley map
     const valleyBounds = [
         [0, 0], // Top-left corner (y, x)
@@ -33,4 +33,4 @@ function MapComponent() {
     );
 }
 
-export default MapComponent;
+export default Map;
