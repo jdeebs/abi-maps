@@ -1,5 +1,6 @@
 import { MapContainer, ImageOverlay, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from "leaflet";
+import ClickToMark from '../ClickToMark/ClickToMark.jsx';
 
 import 'leaflet/dist/leaflet.css';
 import "./Map.css";
@@ -29,6 +30,7 @@ function Map() {
             url={valleyMapImage}
             bounds={valleyBounds}
         />
+        <ClickToMark />
         </MapContainer>
     );
 }
