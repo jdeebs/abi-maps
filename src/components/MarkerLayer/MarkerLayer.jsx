@@ -4,6 +4,8 @@ import L from "leaflet";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
+import "./MarkerLayer.css";
+
 function MarkerLayer() {
   const [markers, setMarkers] = useState([]);
 
@@ -25,9 +27,8 @@ function MarkerLayer() {
           key={marker.id}
           position={marker.position}
           icon={L.divIcon({
-            className: `custom-marker ${marker.type}`,
-            html: "📄", // change later
-            iconSize: [30, 30],
+            className: `marker-icon ${marker.type}`,
+            html: `<img src="src/assets/icons/document_box.svg" width="32" height="32" />`, // change later
           })}
         >
           <Tooltip>{marker.label}</Tooltip>
