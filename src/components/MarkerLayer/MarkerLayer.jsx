@@ -4,6 +4,7 @@ import L from "leaflet";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
+import markerIcons from "../../utils/markerIcons";
 import "./MarkerLayer.css";
 
 function MarkerLayer() {
@@ -22,18 +23,23 @@ function MarkerLayer() {
 
   return (
     <>
-      {markers.map((marker) => (
-        <Marker
-          key={marker.id}
-          position={marker.position}
-          icon={L.divIcon({
-            className: `marker-icon ${marker.type}`,
-            html: `<img src="src/assets/icons/document_box.svg" width="32" height="32" />`, // change later
-          })}
-        >
-          <Tooltip>{marker.label}</Tooltip>
-        </Marker>
-      ))}
+      {markers.map((marker) => {
+        const iconPath =
+          markerIcons[marker.type] || "src/assets/icons/default.svg";
+
+        return (
+          <Marker
+            key={marker.id}
+            position={marker.position}
+            icon={L.divIcon({
+              className: `marker-icon ${marker.type}`,
+              html: `<img src="${iconPath}" />`,
+            })}
+          >
+            <Tooltip>{marker.label}</Tooltip>
+          </Marker>
+        );
+      })}
     </>
   );
 }
