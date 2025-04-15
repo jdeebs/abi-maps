@@ -1,4 +1,4 @@
-import { MapContainer, ImageOverlay } from 'react-leaflet';
+import { MapContainer, ImageOverlay, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from "leaflet";
 
 import 'leaflet/dist/leaflet.css';
