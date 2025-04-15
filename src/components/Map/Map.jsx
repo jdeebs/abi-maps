@@ -1,4 +1,4 @@
-import { MapContainer, ImageOverlay, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, ImageOverlay } from 'react-leaflet';
 import L from "leaflet";
 import ClickToMark from '../ClickToMark/ClickToMark.jsx';
 
