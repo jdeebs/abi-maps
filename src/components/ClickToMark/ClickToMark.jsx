@@ -14,7 +14,7 @@ function ClickToMark() {
         lng: parseFloat(e.latlng.lng.toFixed(2)),
       };
 
-      const formattedCoords = JSON.stringify(coords, null, 2);
+      const formattedCoords = `{ "lat": ${coords.lat}, "lng": ${coords.lng} },`
 
       // Copy to clipboard
       navigator.clipboard
