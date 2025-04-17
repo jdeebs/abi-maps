@@ -1,49 +1,51 @@
-import { useState } from 'react';
-import { Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
+import { useState } from "react";
+import { Marker, Popup, useMapEvents } from "react-leaflet";
+
+import "./ClickToMark.css";
 
 function ClickToMark() {
-    const map = useMap();
-    const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
-    useMapEvents({
-        click(e) {
-            const coords = {
-                lat: parseFloat(e.latlng.lat.toFixed(2)),
-                lng: parseFloat(e.latlng.lng.toFixed(2)),
-            }
+  useMapEvents({
+    click(e) {
+      const coords = {
+        lat: parseFloat(e.latlng.lat.toFixed(2)),
+        lng: parseFloat(e.latlng.lng.toFixed(2)),
+      };
 
-            const formattedCoords = JSON.stringify(coords, null, 2);
+      const formattedCoords = JSON.stringify(coords, null, 2);
 
-            // Copy to clipboard
-            navigator.clipboard.writeText(formattedCoords)
-                .then(() => {
-                    // Create popup at clicked location
-                    const popup = L.popup()
-                        .setLatLng(e.latlng)
-                        .setContent(`Coordinates [${position.lat.toFixed(2)}, ${position.lng.toFixed(2)}] copied to clipboard`)
-                        .openOn(map);
+      // Copy to clipboard
+      navigator.clipboard
+        .writeText(formattedCoords)
+        .then(() => {
+          setShowAlert(true);
+          setTimeout(() => setShowAlert(false), 1500);
+        })
+        .catch((err) => {
+          console.error("Failed to copy:", err);
+        });
 
-                    setTimeout(() => {
-                        map.closePopup(popup);
-                    }, 1500);
-                })
-                .catch((err) => {
-                    console.error("Failed to copy:", err);
-                })
+      // Update state
+      setPosition(coords);
+    },
+  });
 
-            // Update state
-            setPosition(coords);
-        },
-    });
+  return (
+    <>
+        {showAlert && <div className="copy-alert">Coordinates copied to clipboard</div>}
 
-    return position ? (
-        <Marker position={position}>
-            <Popup>
-                Coordinates:<br />
-                {position.lat.toFixed(2)}, {position.lng.toFixed(2)}
-            </Popup>
-        </Marker>
-    ) : null;
+        {position && (
+            <Marker position={position}>
+                <Popup>
+                    Coordinates:<br />
+                    {position.lat.toFixed(2)}, {position.lng.toFixed(2)}
+                </Popup>
+            </Marker>
+        )}
+    </>
+  );
 }
 
 export default ClickToMark;

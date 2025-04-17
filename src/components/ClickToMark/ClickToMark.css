@@ -1,0 +1,32 @@
+.copy-alert {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(40, 40, 40, 0.85);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: fadeinout 1.5s ease;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
