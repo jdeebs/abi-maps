@@ -34,6 +34,7 @@ function MarkerLayer() {
             icon={L.divIcon({
               className: `marker-icon ${marker.type}`,
               html: `<img src="${iconPath}" />`,
+              iconAnchor: [16, 16],
             })}
           >
             <Tooltip>{marker.label}</Tooltip>
