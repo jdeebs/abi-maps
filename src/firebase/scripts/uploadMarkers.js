@@ -1,5 +1,6 @@
 import { db } from "../src/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import fs from "fs";
 
 // === SELECT MARKER TYPE TO UPLOAD ===
 // Only change filePath and sharedData
@@ -16,10 +17,8 @@ async function uploadMarkers() {
   let data;
 
   try {
-    const module = await import(filePath, {
-      assert: { type: "json" },
-    });
-    data = module.default;
+    const jsonData = await fs.promises.readFile(filePath, "utf-8");
+    data = JSON.parse(jsonData);
   } catch (err) {
     console.error(`Failed to import marker data from ${filePath}:\n`, err);
     return;
