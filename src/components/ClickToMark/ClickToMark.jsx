@@ -34,16 +34,19 @@ function ClickToMark() {
 
   return (
     <>
-        {showAlert && <div className="copy-alert">Coordinates copied to clipboard</div>}
+      {showAlert && (
+        <div className="copy-alert">Coordinates copied to clipboard</div>
+      )}
 
-        {position && (
-            <Marker position={position}>
-                <Popup>
-                    Coordinates:<br />
-                    {position.lat.toFixed(2)}, {position.lng.toFixed(2)}
-                </Popup>
-            </Marker>
-        )}
+      {position && (
+        <Marker position={position}>
+          <Popup>
+            Coordinates:
+            <br />
+            {position.lat.toFixed(2)}, {position.lng.toFixed(2)}
+          </Popup>
+        </Marker>
+      )}
     </>
   );
 }
