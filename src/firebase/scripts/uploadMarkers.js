@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { db } from "../../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import fs from "fs";
@@ -10,12 +11,12 @@ const __dirname = dirname(__filename);
 // === SELECT MARKER TYPE TO UPLOAD ===
 // Only change filePath and sharedData
 
-const filePath = resolve(__dirname, "../data/valley/document_boxes.json");
+const filePath = resolve(__dirname, "../data/valley/airdrops.json");
 
 const sharedData = {
-  type: "document_box",
-  icon: "document_box",
-  label: "Document Box",
+  type: "airdrop",
+  icon: "airdrop",
+  label: "Airdrop",
   map: "valley",
 };
 

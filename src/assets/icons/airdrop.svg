@@ -1,0 +1,22 @@
+<svg width="32" height="32" viewBox="0 0 32 32"
+     xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  <!-- Transparent background -->
+  <rect width="32" height="32" fill="none" />
+
+  <!-- Pill-shaped body (rounded ends via rectangles + circles) -->
+  <!-- Left cap -->
+  <rect x="6" y="12" width="4" height="8" fill="#388E3C" rx="2" ry="2" />
+  
+  <!-- Main body -->
+  <rect x="4" y="12" width="24" height="8" fill="#388E3C" rx="4" ry="4" />
+
+  <!-- Right cap -->
+  <rect x="24" y="12" width="2" height="8" fill="#388E3C" rx="10" ry="9" />
+
+  <!-- Straps -->
+  <rect x="8" y="12" width="2" height="8" fill="#1B5E20" />
+  <rect x="22" y="12" width="2" height="8" fill="#1B5E20" />
+
+  <!-- Outline (subtle pixel look) -->
+  <rect x="4" y="12" width="24" height="8" fill="none" stroke="#1B5E20" stroke-width="1" rx="4" ry="4" />
+</svg>
