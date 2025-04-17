@@ -1,11 +1,17 @@
-import { db } from "../src/firebase";
+import { db } from "../../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // === SELECT MARKER TYPE TO UPLOAD ===
 // Only change filePath and sharedData
 
-const filePath = "./data/valley/document_boxes.json";
+const filePath = resolve(__dirname, "../data/valley/document_boxes.json");
+
 const sharedData = {
   type: "document_box",
   icon: "document_box",
@@ -44,11 +50,19 @@ async function uploadMarkers() {
 
     try {
       await addDoc(collection(db, "markers"), marker);
-      console.log(`Uploaded ${sharedData.label} at [${pos.lat}, ${pos.lng}`);
+      console.log(`Uploaded ${sharedData.label} at [${pos.lat}, ${pos.lng}]`);
     } catch (err) {
       console.error("Failed to upload marker:", err);
     }
   }
 }
 
-uploadMarkers();
+uploadMarkers()
+  .then(() => {
+    console.log("Marker upload complete.");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error("Upload failed:", err);
+    process.exit(1);
+  });
