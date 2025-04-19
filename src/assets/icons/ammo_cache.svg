@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32"
+     xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  <!-- Transparent background -->
+  <rect width="32" height="32" fill="none" />
+
+  <!-- Slanted black lid (adjusted upward slightly) -->
+  <polygon points="10,11 22,7 22,9 10,13" fill="#000000" />
+
+  <!-- Ammo box base -->
+  <rect x="10" y="13" width="12" height="9" fill="#388E3C" />
+  <rect x="10" y="13" width="12" height="9" fill="none" stroke="#1B5E20" stroke-width="1" />
+
+  <!-- Bullet symbol -->
+  <!-- Bullet tip -->
+  <rect x="15" y="15" width="2" height="1" fill="#5D4037" />
+  <!-- Bullet body -->
+  <rect x="15" y="16" width="2" height="4" fill="#FFD54F" />
+
+  <!-- Optional inner shadow for box depth -->
+  <line x1="10" y1="17" x2="22" y2="17" stroke="#2E7D32" stroke-width="1" />
+</svg>
