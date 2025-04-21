@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  <!-- Group with 25% scale + 4-unit translate to center -->
+  <g transform="scale(0.75) translate(5.33, 5.33)">
+    <!-- Main Case (45° Angle) -->
+    <polygon points="1,23 6,31 31,5 23,1" fill="#60B24C" stroke="#000000" stroke-width="0.666"/>
+    
+    <!-- Parallel Stripes (45° NW-SE) -->
+    <line x1="3" y1="24" x2="25" y2="2" stroke="#2E7D32" stroke-width="0.666" stroke-linecap="square"/>
+    <line x1="5" y1="27" x2="28" y2="4" stroke="#2E7D32" stroke-width="0.666" stroke-linecap="square"/>
+  </g>
+</svg>
