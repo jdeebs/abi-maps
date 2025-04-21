@@ -13,12 +13,12 @@ const __dirname = dirname(__filename);
 // === SELECT MARKER TYPE TO UPLOAD ===
 // Only change filePath and sharedData
 
-const filePath = resolve(__dirname, "../data/valley/computers.json");
+const filePath = resolve(__dirname, "../data/valley/jackets.json");
 
 const sharedData = {
-  type: "computer",
-  icon: "computer",
-  label: "Computer",
+  type: "jacket",
+  icon: "jacket",
+  label: "Jackets",
   map: "valley",
 };
 

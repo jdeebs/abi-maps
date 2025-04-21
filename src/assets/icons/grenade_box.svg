@@ -1,0 +1,25 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(0.7) translate(7, 7)">
+  <!-- Rectangular Military Crate (Reinforced) -->
+  <rect x="3" y="6" width="26" height="20" fill="#D2B48C" stroke="#5E3F22" stroke-width="1" />
+  <!-- Metal Reinforcements -->
+  <rect x="3" y="6" width="26" height="3" fill="#D2B48C" /> <!-- Top Edge -->
+  <rect x="3" y="23" width="26" height="3" fill="#D2B48C" /> <!-- Bottom Edge -->
+  <rect x="3" y="6" width="3" height="20" fill="#D2B48C" /> <!-- Left Edge -->
+  <rect x="26" y="6" width="3" height="20" fill="#D2B48C" /> <!-- Right Edge -->
+    <rect x="3" y="14" width="26" height="3" fill="#000" /> <!-- Middle Edge -->
+  
+  <!-- MK2 Pineapple Grenade (Detailed) -->
+  <!-- Grenade Body -->
+  <rect x="12" y="12" width="8" height="12" fill="#2E8B57" />
+  <!-- Segmentation Lines -->
+  <rect x="12" y="14" width="8" height="1" fill="#1E5631" />
+  <rect x="12" y="17" width="8" height="1" fill="#1E5631" />
+  <rect x="12" y="20" width="8" height="1" fill="#1E5631" />
+  <!-- Fuse Mechanism -->
+  <rect x="14" y="10" width="4" height="2" fill="#555555" />
+  <rect x="15" y="9" width="2" height="1" fill="#777777" />
+  <!-- Safety Lever -->
+  <rect x="10" y="16" width="2" height="4" fill="#A9A9A9" />
+    </g>
+</svg>
