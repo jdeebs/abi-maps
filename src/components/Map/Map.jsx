@@ -13,13 +13,15 @@ import "./Map.css";
 import valleyMapImage from '/src/assets/images/Valley-Map.webp';
 
 function Map() {
+    // State to store active filter types for markers
+    const [activeTypes, setActiveTypes] = useState([]);
+    const [markerLabels, setMarkerLabels] = useState({});
+
     // Define bounds of valley map
     const valleyBounds = [
         [0, 0], // Top-left corner (y, x)
         [1833, 3028], // Bottom-right corner (y, x)
     ];
-    // State to store active filter types for markers
-    const [activeTypes, setActiveTypes] = useState([]);
 
     const handleFilterChange = (newActiveTypes) => {
         setActiveTypes(newActiveTypes);
@@ -43,10 +45,14 @@ function Map() {
         <ClickToMark />
         <FilterMarkers
             availableTypes={markerTypes}
+            markerLabels={markerLabels}
             initialActiveTypes={['ammo_cache']}
             onFilterChange={handleFilterChange}
         />
-        <MarkerLayer activeTypes={activeTypes}/>
+        <MarkerLayer 
+            activeTypes={activeTypes}
+            onLabelsLoaded={(labels) => setMarkerLabels(labels)}
+        />
         </MapContainer>
     );
 }

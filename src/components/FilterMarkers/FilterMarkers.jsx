@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 const FilterMarkers = ({
   availableTypes,
+  markerLabels = {},
   initialActiveTypes = [],
   onFilterChange,
 }) => {
@@ -44,7 +45,7 @@ const FilterMarkers = ({
             onClick={() => handleTypeToggle(type)}
             sx={{ textTransform: "none" }}
           >
-            {type}
+            {markerLabels[type] || type.replace(/ _/g, ' ')}
           </Button>
         ))}
       </ButtonGroup>
@@ -54,6 +55,7 @@ const FilterMarkers = ({
 
 FilterMarkers.propTypes = {
   availableTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  markerLabels: PropTypes.objectOf(PropTypes.string),
   initialActiveTypes: PropTypes.arrayOf(PropTypes.string),
   onFilterChange: PropTypes.func.isRequired,
 };
