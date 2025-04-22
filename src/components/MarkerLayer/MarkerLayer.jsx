@@ -5,6 +5,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 import { markerIcons } from "../../utils/markerIcons";
 import "./MarkerLayer.css";
+import PropTypes from "prop-types";
 
 function MarkerLayer({ activeTypes = [] }) {
   const [allMarkers, setAllMarkers] = useState([]);
@@ -52,5 +53,9 @@ function MarkerLayer({ activeTypes = [] }) {
     </>
   );
 }
+
+MarkerLayer.propTypes = {
+  activeTypes: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default MarkerLayer;
