@@ -1,4 +1,4 @@
-const markerIcons = {
+export const markerIcons = {
   airdrop: "src/assets/icons/airdrop.svg",
   ammo_cache: "src/assets/icons/ammo_cache.svg",
   computer: "src/assets/icons/computer.svg",
@@ -22,5 +22,5 @@ const markerIcons = {
   toolbox: "src/assets/icons/toolbox.svg",
   weapon_spawn: "src/assets/icons/weapon_spawn.svg"
 };
-  
-export default markerIcons;
+
+export const markerTypes = Object.keys(markerIcons);
