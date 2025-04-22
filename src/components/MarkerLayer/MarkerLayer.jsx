@@ -7,8 +7,9 @@ import { markerIcons } from "../../utils/markerIcons";
 import "./MarkerLayer.css";
 import PropTypes from "prop-types";
 
-function MarkerLayer({ activeTypes = [] }) {
+function MarkerLayer({ activeTypes = [], onLabelsLoaded }) {
   const [allMarkers, setAllMarkers] = useState([]);
+  const [markerLabels, setMarkerLabels] = useState({});
 
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "markers"), (snapshot) => {
@@ -17,17 +18,28 @@ function MarkerLayer({ activeTypes = [] }) {
         ...doc.data(),
       }));
       setAllMarkers(data);
+
+      // Extract labels
+      const labels = {};
+      data.forEach((marker) => {
+        if (marker.type && marker.label) {
+          labels[marker.type] = marker.label;
+        }
+      });
+      setMarkerLabels(labels);
+
+      // Update parent when labels change
+      if (onLabelsLoaded) onLabelsLoaded(labels);
     });
     return () => unsub();
-  }, []);
+  }, [onLabelsLoaded]);
 
   const visibleMarkers = useMemo(() => {
     // Show all markers when no filters active
     if (!activeTypes.length) return allMarkers;
 
-    return allMarkers.filter(marker =>
-      activeTypes.includes(marker.type)
-    );
+    // Filters markers in real-time
+    return allMarkers.filter((marker) => activeTypes.includes(marker.type));
   }, [allMarkers, activeTypes]);
 
   return (
@@ -56,6 +68,7 @@ function MarkerLayer({ activeTypes = [] }) {
 
 MarkerLayer.propTypes = {
   activeTypes: PropTypes.arrayOf(PropTypes.string),
+  onLabelsLoaded: PropTypes.func,
 };
 
 export default MarkerLayer;
