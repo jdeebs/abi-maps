@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup } from "@mui/material";
-
-// Need to define availableTypes array with all marker types here
-
-// Need to add state change to onFilterChange
+import PropTypes from "prop-types";
 
 const FilterMarkers = ({
   availableTypes,
@@ -16,9 +13,11 @@ const FilterMarkers = ({
   // Handle toggle of types
   const handleTypeToggle = (type) => {
     setActiveTypes((prev) => {
+      // Remove if already active
       if (prev.includes(type)) {
         return prev.filter((t) => t !== type);
       } else {
+        // Add if not active
         return [...prev, type];
       }
     });
@@ -45,6 +44,12 @@ const FilterMarkers = ({
       </ButtonGroup>
     </div>
   );
+};
+
+FilterMarkers.propTypes = {
+  availableTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  initialActiveTypes: PropTypes.arrayOf(PropTypes.string),
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default FilterMarkers;
