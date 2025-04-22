@@ -13,16 +13,19 @@ const FilterMarkers = ({
   // Handle toggle of types
   const handleTypeToggle = (type) => {
     setActiveTypes((prev) => {
-      // Remove if already active
+      // Check if the clicked type is already active
       if (prev.includes(type)) {
+        // If active, remove it from array
         return prev.filter((t) => t !== type);
       } else {
-        // Add if not active
+        // If inactive, add it to the array
         return [...prev, type];
       }
     });
   };
 
+  // Run every time activeTypes changes
+  // Notify parent component to update on filter changes
   useEffect(() => {
     onFilterChange(activeTypes);
   }, [activeTypes, onFilterChange]);
@@ -31,9 +34,12 @@ const FilterMarkers = ({
     <div className="filter-container">
       <h4>Filter Markers</h4>
       <ButtonGroup variant="outlined" aria-label="marker type filter">
+        {/* Maps availableTypes to MUI buttons */}
         {availableTypes.map((type) => (
           <Button
             key={type}
+            // contained = active filter
+            // outlined = inactive filter
             variant={activeTypes.includes(type) ? "contained" : "outlined"}
             onClick={() => handleTypeToggle(type)}
             sx={{ textTransform: "none" }}
