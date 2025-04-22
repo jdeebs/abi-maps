@@ -4,7 +4,7 @@ import L from "leaflet";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 
-import markerIcons from "../../utils/markerIcons";
+import { markerIcons } from "../../utils/markerIcons";
 import "./MarkerLayer.css";
 
 function MarkerLayer() {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MapContainer, ImageOverlay } from 'react-leaflet';
 import L from "leaflet";
 import ClickToMark from '../ClickToMark/ClickToMark.jsx';
@@ -17,6 +18,12 @@ function Map() {
         [0, 0], // Top-left corner (y, x)
         [1833, 3028], // Bottom-right corner (y, x)
     ];
+    // State to store active filter types for markers
+    const [activeTypes, setActiveTypes] = useState([]);
+
+    const handleFilterChange = (newActiveTypes) => {
+        setActiveTypes(newActiveTypes);
+    }
   
     return (
         <MapContainer
@@ -34,7 +41,12 @@ function Map() {
             bounds={valleyBounds}
         />
         <ClickToMark />
-        <MarkerLayer />
+        <FilterMarkers
+            availableTypes={markerTypes}
+            initialActiveTypes={['ammo_cache']}
+            onFilterChange={handleFilterChange}
+        />
+        <MarkerLayer activeTypes={activeTypes}/>
         </MapContainer>
     );
 }
